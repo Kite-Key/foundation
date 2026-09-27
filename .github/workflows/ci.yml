@@ -17,7 +17,7 @@ jobs:
       - run: dotnet restore KiteKey.sln
       - run: dotnet test KiteKey.sln --no-restore --configuration Release
       - run: dotnet pack KiteKey.sln --no-restore --configuration Release --output artifacts
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: nuget-packages
           path: |
