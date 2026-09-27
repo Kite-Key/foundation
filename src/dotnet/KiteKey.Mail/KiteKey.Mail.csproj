@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>KiteKey.Mail</PackageId>
+    <Description>SMTP mail sending and plain text email composition.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KiteKey.Core\KiteKey.Core.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+Portions of KiteKey.Core, KiteKey.Hosting, and KiteKey.Mail are adapted from
+Delphinium Common, copyright (c) Taylor White and Delphinium contributors.
+
+The original source locations and adaptations are documented in
+docs/architecture.md. Foundation changes copyright (c) 2026 Kite & Key.

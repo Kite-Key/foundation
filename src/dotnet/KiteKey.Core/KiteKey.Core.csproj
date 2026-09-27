@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>KiteKey.Core</PackageId>
+    <Description>Portable keyed caches, collections, text and concurrency utilities.</Description>
+  </PropertyGroup>
+</Project>
