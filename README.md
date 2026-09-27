@@ -37,14 +37,14 @@ using var message = sender.CreateMailMessage("recipient@example.com", "Hello", "
 Build locally from the repository root with `dotnet test KiteKey.sln` and
 `dotnet pack KiteKey.sln -c Release -o artifacts`.
 
-CI packs on pull requests and main pushes. The release workflow is a **skeleton**:
-before publishing, configure a nuget.org trusted publisher for the **Kite-Key**
-package owner, GitHub owner `Kite-Key`, repository `foundation`, workflow
-`release.yml`, GitHub environment `nuget`, and policy package scope
-`KiteKey.*` (authorize new packages and new versions as needed). Set the `NUGET_USER` GitHub
-environment variable to the NuGet **organization profile name** (not email),
-and protect the `nuget` environment and release tags. Only after confirming
-package IDs are owned by that organization, push a `v0.1.0`-style tag on
+CI packs on pull requests and main pushes. NuGet.org has a trusted-publishing
+policy owned by the **KiteKey** NuGet organization for GitHub owner `Kite-Key`,
+repository `foundation`, workflow `release.yml`, environment `nuget`, and the
+exact package IDs `KiteKey.Core`, `KiteKey.Hosting`, and `KiteKey.Mail`.
+The `NUGET_USER` repository variable is `taylorchasewhite`, the NuGet.org
+**policy creator** (not the organization owner or an email address), as
+required by `NuGet/login`. Protect the `nuget` environment and release tags.
+After verifying tests, contents, and versions, push a `v0.1.0`-style tag on
 `main`. The workflow uses OIDC and a short-lived token, not a saved API key.
 
 See [architecture and source mapping](docs/architecture.md).
