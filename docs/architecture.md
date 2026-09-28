@@ -6,7 +6,8 @@ Delphinium-specific behavior. Source implementations were adapted from
 Delphinium Common (copyright Taylor White / Delphinium contributors); the
 repository is distributed under the MIT license in `LICENSE`. Changes include
 neutral namespaces, mail defaults, SMTP settings and validation, and recipient
-filtering. No source is modified in Delphinium.
+filtering. Delphinium's separate migration removes extracted implementations
+while retaining application-specific adapters.
 
 ## Core
 
