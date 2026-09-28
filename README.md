@@ -2,7 +2,8 @@
 
 Portable components extracted and adapted from Delphinium Common. Requires .NET 10.
 All packages are MIT licensed; the repository's `LICENSE` and this README are included
-in each package. The source packages include portable PDBs and GitHub Source Link.
+in each package. Package builds normalize source paths, and symbol packages include
+portable PDBs and GitHub Source Link without local machine paths.
 
 | Package | Dependency | Contents |
 | --- | --- | --- |
