@@ -6,12 +6,17 @@ in each package. The source packages include portable PDBs and GitHub Source Lin
 
 | Package | Dependency | Contents |
 | --- | --- | --- |
-| `KiteKey.Core` | .NET 10 only | Keyed caches, keyed multivalue collection, async lock, span line reader |
-| `KiteKey.Hosting` | Microsoft.Extensions configuration/DI/hosting/options 10.0.0 | Required configuration, development defaults, validated options, scoped values |
+| `KiteKey.Core` | .NET 10 only | Keyed caches, collections, async/concurrency, text/date/enum/reflection helpers, file rotation and file abstractions |
+| `KiteKey.Hosting` | Microsoft.Extensions configuration/DI/hosting/options 10.0.0 | Required configuration, development defaults, validated options, scoped values, service discovery |
 | `KiteKey.Mail` | `KiteKey.Core`, Microsoft.Extensions.Logging.Abstractions 10.0.0 | SMTP sender, recipient allowlist, plain text mail builder |
 
-The packages start at version **0.1.0**. `KiteKey.Core` caches are not thread-safe:
-coordinate access externally when sharing instances across threads. SMTP settings
+The expanded packages are version **0.2.0**; `0.1.0` is already published.
+`KiteKey.Core` caches are not thread-safe:
+coordinate access externally when sharing instances across threads. .NET 10 supplies
+most async LINQ operations: Core deliberately omits duplicate extension signatures
+to avoid ambiguous method calls. File rotation manages paths supplied by the caller;
+the physical directory abstraction rejects paths escaping its root. `Obfuscate` is
+cosmetic, not a way to anonymize sensitive data. SMTP settings
 must be supplied by the consuming app; this repository contains no credentials.
 Omit the allowlist only when arbitrary recipients are intended (such as production).
 Mail messages are owned and disposed by the caller. `MailSender` owns its SMTP
@@ -44,7 +49,7 @@ exact package IDs `KiteKey.Core`, `KiteKey.Hosting`, and `KiteKey.Mail`.
 The `NUGET_USER` repository variable is `taylorchasewhite`, the NuGet.org
 **policy creator** (not the organization owner or an email address), as
 required by `NuGet/login`. Protect the `nuget` environment and release tags.
-After verifying tests, contents, and versions, push a `v0.1.0`-style tag on
+After verifying tests, contents, and versions, push a `v0.2.0`-style tag on
 `main`. The workflow uses OIDC and a short-lived token, not a saved API key.
 
 See [architecture and source mapping](docs/architecture.md).
