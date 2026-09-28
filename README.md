@@ -43,14 +43,16 @@ using var message = sender.CreateMailMessage("recipient@example.com", "Hello", "
 Build locally from the repository root with `dotnet test KiteKey.sln` and
 `dotnet pack KiteKey.sln -c Release -o artifacts`.
 
-CI packs on pull requests and main pushes. NuGet.org has a trusted-publishing
-policy owned by the **KiteKey** NuGet organization for GitHub owner `Kite-Key`,
-repository `foundation`, workflow `release.yml`, environment `nuget`, and the
-exact package IDs `KiteKey.Core`, `KiteKey.Hosting`, and `KiteKey.Mail`.
-The `NUGET_USER` repository variable is `taylorchasewhite`, the NuGet.org
-**policy creator** (not the organization owner or an email address), as
-required by `NuGet/login`. Protect the `nuget` environment and release tags.
-After verifying tests, contents, and versions, push a `v0.2.0`-style tag on
-`main`. The workflow uses OIDC and a short-lived token, not a saved API key.
+CI packs on pull requests and main pushes. The active NuGet.org trusted-publishing
+policy is owned by the **KiteKey** NuGet organization and trusts GitHub owner
+`Kite-Key`, repository `foundation`, workflow `release.yml`, and environment
+`nuget`. Its scope is the **exact IDs** `KiteKey.Core`, `KiteKey.Hosting`, and
+`KiteKey.Mail`, not a `KiteKey.*` wildcard. The GitHub repository variable
+`NUGET_USER` is `taylorchasewhite`, the NuGet.org **policy creator** required
+by `NuGet/login@v1`—not the organization name `KiteKey` or an email address.
+Protect the `nuget` environment and release tags. Only after verifying tests,
+contents, ownership, and a **new, unpublished version**, tag that version on
+`main` as `v<major>.<minor>.<patch>`. Version `v0.2.0` is already tagged; do
+not reuse it. The workflow uses OIDC and a short-lived token, not a saved API key.
 
 See [architecture and source mapping](docs/architecture.md).
